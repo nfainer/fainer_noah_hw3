@@ -1,2 +1,3 @@
 # noah_drew_hw3
-A video game
+
+An html5 video game that ties in starship troopers.

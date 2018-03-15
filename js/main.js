@@ -1,14 +1,143 @@
-// JavaScript Document
-(() => {
-  console.log('Bug Blast script fired!');
 
-  //Set up a variable stack
-  let hitCount = document.querySelector('#hitCount');
+console.log("Linked Up");
 
-  function init() {
-    hitCount.textContent = "0";
+
+var ctx = document.querySelector("#ctx").getContext("2d");
+
+ctx.font = '30px Arial';
+
+var HEIGHT = 500;
+var WIDTH = 500;
+var timeWhenGameStarted = Date.now(); //return time in ms
+
+// player
+var img = document.querySelector("#player");
+var img1 = document.querySelector("#enemy");
+var timeSurvived;
+
+var player = {
+x:50,
+spdX:40,
+y:40,
+spdY:5,
+name:'P',
+hp:10,
+};
+
+
+var enemyList = {};
+// enemy
+// get distance between player and enemy < 10 => colliding
+getDistanceBetweenEntity = function (entity1,entity2){ //return distance (number)
+  var vx = entity1.x - entity2.x;
+  var vy = entity1.y - entity2.y;
+  return Math.sqrt(vx*vx*vy*vy);
+}
+
+testCollisionEntity = function (entity1,entity2){ //return if colliding (true or false)
+  var distance = getDistanceBetweenEntity(entity1,entity2);
+  return distance < 30;
+
+}
+
+Enemy = function(id,x,y,spdX,spdY){
+  var enemy = {
+  x:x,
+  spdX:spdX,
+  y:y,
+  spdY:spdY,
+  name:'E',
+  id:id,
+  };
+  enemyList[id] = enemy;
+}
+
+document.onmousemove = function(mouse){
+  var mouseX = mouse.clientX - 25;
+  var mouseY = mouse.clientY - 25;
+
+  player.x = mouseX;
+  player.y = mouseY;
+}
+
+
+updateEntity = function (something){
+
+  updateEntityPosition(something);
+  drawEnemy(something);
+}
+
+updateEntityPosition = function(something){
+  //enemy
+  something.x += something.spdX;
+  something.y += something.spdY;
+
+
+
+if(something.x < 0 || something.x > WIDTH){
+  something.spdX = -something.spdX;
+}
+
+
+
+if(something.y < 0 || something.y > HEIGHT){
+  something.spdY = -something.spdY;
+}
+}
+
+
+
+drawPlayer = function(something){
+  ctx.save();
+  ctx.drawImage(img,something.x-25,something.y-55,75,75);
+  //ctx.fillStyle = 'green';
+//  ctx.fillRect(something.x-10,something.y-10,20,20);
+  ctx.restore();
+}
+
+drawEnemy = function(something){
+  ctx.save();
+  ctx.drawImage(img1,something.x-15,something.y-15,40,40);
+  ctx.restore();
+}
+
+update = function (){
+  ctx.clearRect(0,0,WIDTH,HEIGHT);
+  timeSurvived = Date.now() - timeWhenGameStarted;
+  for(var key in enemyList){
+    updateEntity(enemyList[key]);
+
+    var isColliding = testCollisionEntity(player,enemyList[key]);
+    if(isColliding){
+      player.hp = player.hp - 1;
+      if(player.hp <= 0) {
+        timeSurvived = Date.now() - timeWhenGameStarted;
+        console.log("you lost! you" + timeSurvived + "ms.");
+        timeWhenGameStarted = Date.now();
+        player.hp = 10;
+
+      }
+    }
   }
 
-  init()
+  drawPlayer(player);
+  ctx.fillText(player.hp + "Hp",0,30);
+  document.querySelector("h3").innerHTML = "Remaining HP:" + player.hp;
+  document.querySelector("h4").innerHTML = timeSurvived + "ms";
 
-})();
+
+
+}
+
+var message = 'bouncing';
+
+
+Enemy('E1',150,350,10,-15);
+Enemy('E2',120,300,13,-5);
+Enemy('E3',250,150,10,-8);
+Enemy('E4',50,350,10,-8);
+
+
+
+
+setInterval(update,40);

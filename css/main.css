@@ -4,7 +4,7 @@
 /*this class will hide elements on our page*/
 .hidden
 {
-		display: none;
+	display: none;
 }
 
 .clearfix:after
@@ -16,66 +16,28 @@
 	clear: both;
 }
 
-#container
+body
 {
-	width: 1000px;
-	margin: 0 auto;
-	padding-top: 33px;
-	font-family: 'Source Sans Pro', sans-serif;
-	color: #222;
-}
-
-#gameInfo
-{
-	width: 304px;
-	height: 696px;
-	float: left;
-	/*background-color: #999;*/
+	font-family: Arial, sans-serif;
+	font-size: 40px;
 	text-align: center;
-	border-top: 1px solid #111;
-	border-left: 1px solid #111;
-	border-bottom: 1px solid #111;
 }
 
-#hitsInfo
+canvas
 {
-	border-top: 1px solid #111;
+	border:1px solid #000;
+	cursor: none;
+	float: left;
+	margin-left: 15px;
+	background: url(../images/bckgrd.jpg);
 }
 
-#gameArea
+#player, #enemy
 {
-	width: 693px;
-	float: right;
-	/*background-color: #888;*/
-	border-left: 1px solid #111;
-	border-right: 1px solid #111;
-	border-top: 1px solid #111;
-	border-bottom: 1px solid #111;
+	display: none;
 }
 
-svg
+#info
 {
-	width: 425px;
 	margin-top: 50px;
-	margin-left: 135px;
-	padding-bottom: 50px;
-}
-
-#mainTitle
-{
-	font-size: 20px;
-	margin-top: 18px;
-	margin-bottom: 18px;
-}
-
-#hits
-{
-	font-size: 18px;
-	margin-top: 40px;
-}
-
-#hitCount
-{
-	font-size: 100px;
-	padding-top: 120px;	
 }

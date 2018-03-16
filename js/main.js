@@ -4,11 +4,12 @@ console.log("Linked Up");
 
 var ctx = document.querySelector("#ctx").getContext("2d");
 
-ctx.font = '30px Arial';
 
 var HEIGHT = 500;
 var WIDTH = 500;
 var timeWhenGameStarted = Date.now(); //return time in ms
+var arr = [];
+var score = arr;
 
 // player
 var img = document.querySelector("#player");
@@ -114,23 +115,24 @@ update = function (){
         timeSurvived = Date.now() - timeWhenGameStarted;
         console.log("you lost! you" + timeSurvived + "ms.");
         timeWhenGameStarted = Date.now();
+        arr.pop();
+        arr.push(timeSurvived);
+        document.querySelector("#scoreboard").innerHTML = "You survived: " + score/1000 + " Seconds";
         player.hp = 10;
+
 
       }
     }
   }
 
   drawPlayer(player);
-  ctx.fillText(player.hp + "Hp",0,30);
   document.querySelector("h3").innerHTML = "Remaining HP:" + player.hp;
-  document.querySelector("h4").innerHTML = timeSurvived + "ms";
+  document.querySelector("h4").innerHTML = Math.round(timeSurvived/1000) + " seconds";
+
 
 
 
 }
-
-var message = 'bouncing';
-
 
 Enemy('E1',150,350,10,-15);
 Enemy('E2',120,300,13,-5);

@@ -30,7 +30,7 @@ canvas
 	float: left;
 	margin-left: 30px;
 	margin-top: 0px;
-	background: url(../images/bckgrd.jpg);
+	background: url(../images/bckgrd.png);
 }
 
 #player, #enemy

@@ -21,6 +21,11 @@ body
 	font-family: Arial, sans-serif;
 	font-size: 40px;
 	text-align: center;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#f3e2c7+0,c19e67+21,b68d4c+79,e9d4b3+100&0.75+0,1+48,0.75+100 */
+background: -moz-linear-gradient(top, rgba(243,226,199,0.75) 0%, rgba(193,158,103,0.86) 21%, rgba(188,150,90,1) 48%, rgba(182,141,76,0.85) 79%, rgba(233,212,179,0.75) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(243,226,199,0.75) 0%,rgba(193,158,103,0.86) 21%,rgba(188,150,90,1) 48%,rgba(182,141,76,0.85) 79%,rgba(233,212,179,0.75) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(243,226,199,0.75) 0%,rgba(193,158,103,0.86) 21%,rgba(188,150,90,1) 48%,rgba(182,141,76,0.85) 79%,rgba(233,212,179,0.75) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#bff3e2c7', endColorstr='#bfe9d4b3',GradientType=0 ); /* IE6-9 */
 }
 
 canvas
@@ -33,6 +38,12 @@ canvas
 	background: url(../images/bckgrd.png);
 }
 
+button
+{
+	padding: 30px;
+	font-size: 20px;
+}
+
 #player, #enemy
 {
 	display: none;
@@ -40,38 +51,45 @@ canvas
 
 #info
 {
-	margin-top: 50px;
+	margin-top: 25px;
+	margin-right: 25px;
+	position: fixed;
+	left: 68%;
+	text-align: center;
+	border: solid #fff 6px;
+	border-radius: 8px;
+	/* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#0e0e0e+0,7d7e7d+100 */
+background: rgb(14,14,14); /* Old browsers */
+background: -moz-linear-gradient(top, rgba(14,14,14,1) 0%, rgba(125,126,125,1) 100%); /* FF3.6-15 */
+background: -webkit-linear-gradient(top, rgba(14,14,14,1) 0%,rgba(125,126,125,1) 100%); /* Chrome10-25,Safari5.1-6 */
+background: linear-gradient(to bottom, rgba(14,14,14,1) 0%,rgba(125,126,125,1) 100%); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#0e0e0e', endColorstr='#7d7e7d',GradientType=0 ); /* IE6-9 */
 }
 
 h1
 {
 	color: gold;
-	float: right;
-	margin-right: 300px;
-	text-align: center;
+	margin: 0 auto;
+	font-size: 4em;
 }
 
 h2
 {
-	float: right;
+
 	width: 400px;
-	clear: right;
-	margin-right: 350px;
-	text-align: center;
-	margin-top: 100px;
+	margin: 0 auto;
 	color: red;
 }
 
 h3
 {
-	float: right;
-	margin-top: 50px;
-	color: red;
-	margin-right: 390px;
+	color: green;
+	margin: 0 auto;
+	padding: 20px;
 }
 
 h4
 {
 	color: blue;
-	font-size: 16px;
+	font-size: 3em;
 }
